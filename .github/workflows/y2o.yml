@@ -24,4 +24,4 @@ jobs:
           curl https://rclone.org/install.sh | sudo bash
           cd y/
           cat ../url.txt | while read line; do echo start download "$line";youtube-dl "$line" --cookies cookies.txt; done
-          for filename in `find . -type f \( -name "*.mp4" -o -name "*.mkv" \)`; do echo start upload $filename; rclone move $filename remote:/others/for_share/video/yua --log-level DEBUG; done
+          for filename in `find . -type f \( -name "*.mp4" -o -name "*.mkv" \)`; do echo start upload $filename; rclone move "$filename" remote:others/for_share/video/yua --log-level DEBUG; done
