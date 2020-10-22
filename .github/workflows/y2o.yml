@@ -19,8 +19,8 @@ jobs:
           sudo apt install -y ffmpeg
           sudo pip3 install youtube-dl
           cd y2o/
-          unzip -P "$Y2O_PASSWORD" -o y.zip
-          unzip -P "$Y2O_PASSWORD" -d ~ -o files.zip
+          unzip -P "$PASSWORD" -o y.zip
+          unzip -P "$PASSWORD" -d ~ -o files.zip
           curl https://rclone.org/install.sh | sudo bash
           cd y/
           cat ../url.txt | while read line; do echo start download "$line";youtube-dl "$line" --cookies cookies.txt; done
