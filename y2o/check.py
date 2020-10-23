@@ -49,7 +49,7 @@ try:
                 shutil.move(filename,'y')
                 filename = 'y/'+filename
                 print("=========start upload========")
-                os.system('rclone move "'+filename+'" remote:others/for_share/video/yuan --log-level INFO')
+                os.system('rclone move "'+filename+'" remote:others/for_share/video/yua --log-level INFO')
                 os.remove(filename)
                 print("===========done===========")
         except Exception as e:

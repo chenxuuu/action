@@ -1,9 +1,9 @@
 name: y2o
 
 on:
-  push:
-    paths:
-      - 'y2o/**'
+  schedule:
+    #每晚凌晨3:30自动运行
+    - cron:  '30 3 * * *'
 
 jobs:
   build:
