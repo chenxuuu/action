@@ -46,9 +46,14 @@ try:
                     print("file not found")
                     continue
                 print("file found:"+filename+".   move it")
-                shutil.move(filename,'y')
-                filename = 'y/'+filename
-                print("=========start upload========")
+                shutil.move(filename,'y/'+time.strftime("[%Y-%m-%d]", time.localtime())+filename)
+                filename = 'y/'+time.strftime("[%Y-%m-%d]", time.localtime())+filename
+                print("=========start upload video========")
+                os.system('rclone move "'+filename+'" remote:others/for_share/video/yua --log-level INFO')
+                os.remove(filename)
+                print("===========upload cover===========")
+                filename = filename+".jpg"
+                urllib.request.urlretrieve(v['thumbnail']['thumbnails'][len(v['thumbnail']['thumbnails'])-1]['url'],filename)
                 os.system('rclone move "'+filename+'" remote:others/for_share/video/yua --log-level INFO')
                 os.remove(filename)
                 print("===========done===========")
