@@ -2,8 +2,8 @@ name: y2o
 
 on:
   schedule:
-    #每晚凌晨3:30自动运行
-    - cron:  '30 3 * * *'
+    #每晚凌晨3:30自动运行（+8时区）
+    - cron:  '19 3 * * *'
 
 jobs:
   build:
