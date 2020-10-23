@@ -18,6 +18,11 @@ jobs:
           sudo pip3 install youtube-dl
           cd y2o/
           unzip -P "$PASSWORD" -o y.zip
+          unzip -P "$PASSWORD" -o bililogin.zip
           unzip -P "$PASSWORD" -d ~ -o files.zip
           curl https://rclone.org/install.sh | sudo bash
+          git clone https://github.com/FortuneDayssss/BilibiliUploader.git
+          cd BilibiliUploader/
+          python3 setup.py install
+          cd ../
           python3 check.py
