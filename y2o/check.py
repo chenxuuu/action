@@ -7,6 +7,8 @@ import urllib
 import urllib.request
 import re
 import shutil
+from bilibiliuploader.bilibiliuploader import BilibiliUploader
+from bilibiliuploader.core import VideoPart
 
 #设置UA，防止屏蔽
 opener=urllib.request.build_opener()
