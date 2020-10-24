@@ -30,6 +30,6 @@ jobs:
           sudo apt-get install python3-setuptools
           git clone https://github.com/FortuneDayssss/BilibiliUploader.git
           cd BilibiliUploader/
-          python3 setup.py install
+          sudo python3 setup.py install
           cd ../
           python3 check.py
