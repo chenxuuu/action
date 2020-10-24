@@ -29,6 +29,7 @@ try:
         print("=============select one video===============")
         try:
             v = v['gridVideoRenderer']
+            print("published "+v['publishedTimeText']['simpleText'])
             if "hours ago" in v['publishedTimeText']['simpleText'] or "minutes ago" in v['publishedTimeText']['simpleText'] or "minute ago" in v['publishedTimeText']['simpleText']:
                 print('=========================')
                 print("https://www.youtube.com/watch?v="+v['videoId'])
@@ -49,8 +50,8 @@ try:
                     print("file not found")
                     continue
                 print("file found:"+filename+".   move it")
-                shutil.move(filename,'./y/'+time.strftime("[%Y-%m-%d]", time.localtime())+filename)
-                filename = './y/'+time.strftime("[%Y-%m-%d]", time.localtime())+filename
+                shutil.move(filename,'./y/'+time.strftime("[%Y-%m-%d]", time.localtime())+filename[2:])
+                filename = './y/'+time.strftime("[%Y-%m-%d]", time.localtime())+filename[2:]
                 print("=========start upload video========")
                 os.system('rclone move "'+filename+'" remote:others/for_share/video/yua --log-level INFO')
                 vfile = "./y/xxxx"+filename[-4:]#文件名改成xxxx防止上传出错
