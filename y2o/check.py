@@ -53,13 +53,13 @@ try:
                 shutil.move(filename,'./y/'+time.strftime("[%Y-%m-%d]", time.localtime())+filename[2:])
                 filename = './y/'+time.strftime("[%Y-%m-%d]", time.localtime())+filename[2:]
                 print("=========start upload video========")
-                os.system('rclone move "'+filename+'" remote:others/for_share/video/yua --log-level INFO')
+                os.system('rclone copy "'+filename+'" remote:others/for_share/video/yua --log-level INFO')
                 vfile = "./y/xxxx"+filename[-4:]#文件名改成xxxx防止上传出错
-                os.rename(os.getcwd()+"/"+filename[2:],os.getcwd()+"/"+vfile[2:])
+                os.rename(filename,vfile)
                 print("===========upload cover===========")
                 filename = filename+".jpg"
                 urllib.request.urlretrieve(v['thumbnail']['thumbnails'][len(v['thumbnail']['thumbnails'])-1]['url'],filename)
-                os.system('rclone move "'+filename+'" remote:others/for_share/video/yua --log-level INFO')
+                os.system('rclone copy "'+filename+'" remote:others/for_share/video/yua --log-level INFO')
                 os.remove(filename)
                 print("===========upload to bilibili============")
                 uploader = BilibiliUploader()
