@@ -54,27 +54,13 @@ try:
                 filename = './y/'+time.strftime("[%Y-%m-%d]", time.localtime())+filename[2:]
                 print("=========start upload video========")
                 os.system('rclone copy "'+filename+'" remote:others/for_share/video/yua --log-level INFO')
-                vfile = "./y/xxxx"+filename[-4:]#文件名改成xxxx防止上传出错
-                os.rename(filename,vfile)
+                os.system('rclone copy "'+filename+'" home:hd/y2b --log-level INFO')
+                os.remove(filename)
                 print("===========upload cover===========")
                 filename = filename+".jpg"
                 urllib.request.urlretrieve(v['thumbnail']['thumbnails'][len(v['thumbnail']['thumbnails'])-1]['url'],filename)
                 os.system('rclone copy "'+filename+'" remote:others/for_share/video/yua --log-level INFO')
                 os.remove(filename)
-                print("===========upload to bilibili============")
-                # uploader = BilibiliUploader()
-                # uploader.login_by_access_token_file("./bililogin.json")
-                # uploader.edit(
-                #     bvid="BV1ka4y157vm",
-                #     parts=[
-                #         VideoPart(
-                #             path=vfile,
-                #             title=filename[2:-8],
-                #             desc=""
-                #         )
-                #     ],
-                # )
-                os.remove(vfile)
                 print("===========done===========")
         except Exception as e:
             print(e)
