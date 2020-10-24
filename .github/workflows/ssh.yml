@@ -1,8 +1,11 @@
 name: CI
 on:
-  push:
-    tags:
-      - ssh
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'
+        required: true
+        default: 'warning'
 jobs:
   build:
     runs-on: ubuntu-latest
