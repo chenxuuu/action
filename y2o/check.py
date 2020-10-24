@@ -55,7 +55,7 @@ try:
                 print("=========start upload video========")
                 os.system('rclone move "'+filename+'" remote:others/for_share/video/yua --log-level INFO')
                 vfile = "./y/xxxx"+filename[-4:]#文件名改成xxxx防止上传出错
-                os.rename(filename,vfile)
+                os.rename(os.getcwd()+"/"+filename[2:],os.getcwd()+"/"+vfile[2:])
                 print("===========upload cover===========")
                 filename = filename+".jpg"
                 urllib.request.urlretrieve(v['thumbnail']['thumbnails'][len(v['thumbnail']['thumbnails'])-1]['url'],filename)
