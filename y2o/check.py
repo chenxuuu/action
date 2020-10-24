@@ -62,18 +62,18 @@ try:
                 os.system('rclone copy "'+filename+'" remote:others/for_share/video/yua --log-level INFO')
                 os.remove(filename)
                 print("===========upload to bilibili============")
-                uploader = BilibiliUploader()
-                uploader.login_by_access_token_file("./bililogin.json")
-                uploader.edit(
-                    bvid="BV1ka4y157vm",
-                    parts=[
-                        VideoPart(
-                            path=vfile,
-                            title=filename[2:-8],
-                            desc=""
-                        )
-                    ],
-                )
+                # uploader = BilibiliUploader()
+                # uploader.login_by_access_token_file("./bililogin.json")
+                # uploader.edit(
+                #     bvid="BV1ka4y157vm",
+                #     parts=[
+                #         VideoPart(
+                #             path=vfile,
+                #             title=filename[2:-8],
+                #             desc=""
+                #         )
+                #     ],
+                # )
                 os.remove(vfile)
                 print("===========done===========")
         except Exception as e:
