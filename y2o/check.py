@@ -52,8 +52,12 @@ try:
                 filename = './y/'+time.strftime("[%Y-%m-%d]", time.localtime())+filename[2:]
                 print("=========start upload video========")
                 os.system('rclone copy "'+filename+'" remote:others/for_share/video/yua --log-level INFO')
-                os.system('rclone copy "'+filename+'" home:hd/y2b --log-level INFO')
                 os.remove(filename)
+                print("=========upload video url to home========")
+                f = open("url.txt", "a")
+                f.write(filename+"\n")
+                f.close()
+                os.system('rclone copy "url.txt" home:hd/y2b --log-level INFO')
                 print("===========upload cover===========")
                 filename = filename+".jpg"
                 urllib.request.urlretrieve(v['thumbnail']['thumbnails'][len(v['thumbnail']['thumbnails'])-1]['url'],filename)
