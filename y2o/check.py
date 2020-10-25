@@ -51,6 +51,11 @@ try:
                 print("file found:"+filename+".   move it")
                 shutil.move(filename,'./y/'+time.strftime("[%Y-%m-%d]", time.localtime())+filename[2:])
                 filename = './y/'+time.strftime("[%Y-%m-%d]", time.localtime())+filename[2:]
+                print("=============check is mp4 or not and convert============")
+                if filename[-3:] != "mp4":
+                    os.system("ffmpeg -i \""+filename+"\" -c:v copy -c:a aac \""+filename[:-3]+"mp4\"")
+                    os.remove(filename)
+                    filename = filename[:-3]+"mp4"
                 print("=========start upload video========")
                 os.system('rclone copy "'+filename+'" remote:others/for_share/video/yua --log-level INFO')
                 os.remove(filename)
