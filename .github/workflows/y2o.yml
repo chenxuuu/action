@@ -20,6 +20,7 @@ jobs:
         env:
           PASSWORD: ${{ secrets.Y2O_PASSWORD }}
         run: |
+          sudo apt update
           sudo apt install -y ffmpeg
           sudo pip3 install youtube-dl
           cd y2o/
