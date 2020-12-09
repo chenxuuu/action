@@ -20,6 +20,7 @@ try:
     matchObj = infore.findall(html)
     if len(matchObj) == 0:
         print("not found video")
+        print(html)
         exit(-1)
     infoAll = json.loads(matchObj[0])
     vlist = infoAll['contents']['twoColumnBrowseResultsRenderer']['tabs'][1]['tabRenderer']['content']['sectionListRenderer']['contents'][0]['itemSectionRenderer']['contents'][0]['gridRenderer']['items']
