@@ -16,7 +16,7 @@ urllib.request.install_opener(opener)
 try:
     url = "https://www.youtube.com/c/%E3%82%86%E3%81%82%E3%81%A1%E3%82%83%E3%82%93%E3%81%AD%E3%82%8B0825/videos"
     html = urllib.request.urlopen(url,timeout=5).read().decode('utf-8')
-    infore = re.compile(r'window\["ytInitialData"\] = *(.+?});',re.DOTALL)
+    infore = re.compile(r'var ytInitialData *= *(.+?});',re.DOTALL)
     matchObj = infore.findall(html)
     if len(matchObj) == 0:
         print("not found video")
