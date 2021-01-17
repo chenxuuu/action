@@ -15,12 +15,8 @@ jobs:
       env:
         PASSWORD: ${{ secrets.Y2O_PASSWORD }}
       run: |
-        sudo apt update
-        sudo apt install -y ffmpeg
-        sudo pip3 install youtube-dl
         cd y2o/
         unzip -P "$PASSWORD" -o y.zip
         unzip -P "$PASSWORD" -d ~ -o files.zip
-        curl https://rclone.org/install.sh | sudo bash
     - name: Setup tmate session
       uses: mxschmitt/action-tmate@v3
