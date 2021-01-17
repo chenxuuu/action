@@ -11,12 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: y2o
+    - name: Setup tmate session
       env:
         PASSWORD: ${{ secrets.Y2O_PASSWORD }}
-      run: |
-        cd y2o/
-        unzip -P "$PASSWORD" -o y.zip
-        unzip -P "$PASSWORD" -d ~ -o files.zip
-    - name: Setup tmate session
       uses: mxschmitt/action-tmate@v3
