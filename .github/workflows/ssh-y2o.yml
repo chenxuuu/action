@@ -1,4 +1,4 @@
-name: CI
+name: CIy2b
 on:
   workflow_dispatch:
     inputs:
