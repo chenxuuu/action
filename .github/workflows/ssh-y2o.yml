@@ -11,7 +11,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Setup tmate session
-      env:
-        PASSWORD: ${{ secrets.Y2O_PASSWORD }}
-      uses: mxschmitt/action-tmate@v3
+      - name: y2o
+        env:
+          PASSWORD: ${{ secrets.Y2O_PASSWORD }}
+        run: |
+          sudo apt update
+          sudo apt install -y ffmpeg
+          sudo pip3 install youtube-dl
+          cd y2o/
+          unzip -P "$PASSWORD" -o y.zip
+          unzip -P "$PASSWORD" -d ~ -o files.zip
+          curl https://rclone.org/install.sh | sudo bash
+          mkdir download
+          cd download
+          youtube-dl --cookies ../y/cookies.txt https://youtube.com/playlist?list=PLCu3aJfqYoLwWstE6dheoo_Cr73K7XAwo
+          cd ..
+          rclone copy download remote:others/for_share/video/yua/asmr1 --log-level INFO
