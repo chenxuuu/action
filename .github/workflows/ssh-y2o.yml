@@ -1,0 +1,26 @@
+name: CI
+on:
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'
+        required: true
+        default: 'warning'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: y2o
+      env:
+        PASSWORD: ${{ secrets.Y2O_PASSWORD }}
+      run: |
+        sudo apt update
+        sudo apt install -y ffmpeg
+        sudo pip3 install youtube-dl
+        cd y2o/
+        unzip -P "$PASSWORD" -o y.zip
+        unzip -P "$PASSWORD" -d ~ -o files.zip
+        curl https://rclone.org/install.sh | sudo bash
+    - name: Setup tmate session
+      uses: mxschmitt/action-tmate@v3
