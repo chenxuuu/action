@@ -24,6 +24,6 @@ jobs:
           curl https://rclone.org/install.sh | sudo bash
           mkdir download
           cd download
-          youtube-dl --cookies ../y/cookies.txt https://www.youtube.com/watch?v=z5OiOX4uMkk&feature=youtu.be
+          youtube-dl --cookies ../y/cookies.txt https://www.youtube.com/watch?v=z5OiOX4uMkk
           cd ..
           rclone copy download remote:others/for_share/video/yua/temp --log-level INFO
