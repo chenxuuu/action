@@ -26,7 +26,6 @@ try:
     vlist = infoAll['contents']['twoColumnBrowseResultsRenderer']['tabs'][1]['tabRenderer']['content']['sectionListRenderer']['contents'][0]['itemSectionRenderer']['contents'][0]['gridRenderer']['items']
     for v in vlist:
         print("=============select one video===============")
-        os.system('rclone copy home:hd/y2b/url.txt ./ --log-level INFO')
         try:
             v = v['gridVideoRenderer']
             print("published "+v['publishedTimeText']['simpleText'])
@@ -60,11 +59,6 @@ try:
                 print("=========start upload video========")
                 os.system('rclone copy "'+filename+'" remote:others/for_share/video/yua --log-level INFO')
                 os.remove(filename)
-                print("=========upload video url to home========")
-                f = open("url.txt", "a")
-                f.write(filename+"\n")
-                f.close()
-                os.system('rclone copy url.txt home:hd/y2b --log-level INFO')
                 print("===========upload cover===========")
                 filename = filename+".jpg"
                 urllib.request.urlretrieve(v['thumbnail']['thumbnails'][len(v['thumbnail']['thumbnails'])-1]['url'],filename)
