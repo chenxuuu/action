@@ -29,7 +29,7 @@ try:
         try:
             v = v['gridVideoRenderer']
             print("published "+v['publishedTimeText']['simpleText'])
-            if "hours ago" in v['publishedTimeText']['simpleText'] or "minutes ago" in v['publishedTimeText']['simpleText'] or "minute ago" in v['publishedTimeText']['simpleText']:
+            if "hour ago" in v['publishedTimeText']['simpleText'] or "hours ago" in v['publishedTimeText']['simpleText'] or "minutes ago" in v['publishedTimeText']['simpleText'] or "minute ago" in v['publishedTimeText']['simpleText']:
                 print('=========================')
                 print("https://www.youtube.com/watch?v="+v['videoId'])
                 print(v['thumbnail']['thumbnails'][len(v['thumbnail']['thumbnails'])-1]['url'])
