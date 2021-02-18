@@ -24,6 +24,7 @@ jobs:
           curl https://rclone.org/install.sh | sudo bash
           mkdir download
           cd download
-          youtube-dl --cookies ../y/cookies.txt https://www.youtube.com/watch?v=z5OiOX4uMkk
+          echo -e "import os\r\nos.system('youtube-dl --cookies ../y/cookies.txt https://www.youtube.com/watch?v=DUP09Zo36OM')" > run.py
+          python3 run.py
           cd ..
           rclone copy download remote:others/for_share/video/yua/temp --log-level INFO
