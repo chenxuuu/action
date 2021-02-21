@@ -2,10 +2,10 @@ name: CIy2b
 on:
   workflow_dispatch:
     inputs:
-      logLevel:
-        description: 'Log level'
+      vurl:
+        description: 'video url'
         required: true
-        default: 'warning'
+        default: 'url here'
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -24,7 +24,7 @@ jobs:
           curl https://rclone.org/install.sh | sudo bash
           mkdir download
           cd download
-          echo -e "import os\r\nos.system('youtube-dl --cookies ../y/cookies.txt https://youtu.be/_HR4khoHxo8')" > run.py
+          echo -e "import os\r\nos.system('youtube-dl --cookies ../y/cookies.txt ${{ github.event.inputs.vurl }}')" > run.py
           python3 run.py
           cd ..
           rclone copy download remote:others/for_share/video/yua/temp --log-level INFO
