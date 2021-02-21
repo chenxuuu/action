@@ -1,4 +1,4 @@
-name: CIy2b
+name: y2b-url
 on:
   workflow_dispatch:
     inputs:
