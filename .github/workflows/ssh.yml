@@ -1,11 +1,6 @@
 name: CI
-on:
-  workflow_dispatch:
-    inputs:
-      logLevel:
-        description: 'Log level'
-        required: true
-        default: 'warning'
+on: [workflow_dispatch]
+
 jobs:
   build:
     runs-on: ubuntu-latest
