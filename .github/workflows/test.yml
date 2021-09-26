@@ -9,9 +9,9 @@ jobs:
     - uses: actions/checkout@v2
     - name: fail job
       run: |
-        echo Hello, world! && exit 1
+        echo Hello, world!
 
-    - name: Report Status
+    - name: report if failure
       if: always()
       env:
         STATUS: ${{ job.status }}
