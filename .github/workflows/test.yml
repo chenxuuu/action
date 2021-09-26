@@ -6,12 +6,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: fail job
-        run: echo Hello, world! && exit 1
+    - uses: actions/checkout@v2
+    - name: fail job
+      run: |
+        echo Hello, world! && exit 1
 
-      - name: Report Status
-        if: always()
-        with:
-          STATUS: ${{ job.status }}
-        run: echo job status $STATUS
+    - name: Report Status
+      if: always()
+      env:
+        STATUS: ${{ job.status }}
+      run: echo job status $STATUS
