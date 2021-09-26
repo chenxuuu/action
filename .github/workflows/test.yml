@@ -15,4 +15,5 @@ jobs:
       if: always()
       env:
         STATUS: ${{ job.status }}
-      run: echo job status $STATUS
+      run: |
+        if [ "$STATUS" = "failure" ];then echo xxxxxxxxxxxxxx; fi
