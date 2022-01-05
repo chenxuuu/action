@@ -4,20 +4,14 @@ on: [workflow_dispatch]
 jobs:
   build:
     runs-on: windows-2019
-    defaults:
-      run:
-        shell: msys2 {0}
     steps:
-    - uses: actions/checkout@v1
-    - uses: msys2/setup-msys2@v2
-      with:
-        msystem: MINGW64
-        update: true
-        install: git mingw-w64-x86_64-gcc mingw-w64-x86_64-gdb mingw-w64-x86_64-cmake mingw-w64-x86_64-make mingw-w64-x86_64-toolchain
+    - uses: actions/checkout@v2
     - name: prepare
+      shell: pwsh
+      env:
+        LUATOOLS2REPO: ${{ secrets.LUATOOLS2REPO }}
       run: |
-        echo | pacman -Rsc python
-        git clone $LUATOOLS2REPO
+        .\retry_clone_luatools.ps1
         cd luatools_py3
         pip install -r requirement.txt
     - name: build
