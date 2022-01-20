@@ -18,9 +18,9 @@ jobs:
       run: |
         cd luatools_py3
         ./build_lang.bat
-        ./build_luat.bat
+        ./build_luat_x86.bat
     - name: Upload artifact
       uses: actions/upload-artifact@v1
       with:
         name: luatools
-        path: luatools_py3/Luatools_v2.exe
+        path: luatools_py3/Luatools_v2_x86
