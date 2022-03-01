@@ -1,6 +1,9 @@
 name: test
 on:
   workflow_dispatch:
+  repository_dispatch:
+    types:
+      - webhook-1
 
 jobs:
   build:
