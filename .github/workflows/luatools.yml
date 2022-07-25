@@ -13,6 +13,7 @@ jobs:
       run: |
         .\retry_clone_luatools.ps1
         cd luatools_py3
+        pip install wheel
         pip install -r requirement.txt
     - name: build
       run: |
