@@ -13,7 +13,9 @@ jobs:
       run: |
         .\retry_clone_luatools.ps1
         cd luatools_py3
-        pip install wheel
+        choco uninstall python3
+        choco install python3 --version=3.7.7
+        python -V
         pip install -r requirement.txt
     - name: build
       run: |
