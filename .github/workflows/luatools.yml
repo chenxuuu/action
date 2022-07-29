@@ -15,12 +15,15 @@ jobs:
         cd luatools_py3
         python -V
         pip install -r requirement.txt
+    - name: prepare python
+      run: |
+        cd c:/
+        Invoke-WebRequest https://github.com/openLuat/LuatOS/releases/download/v0.0.1/Python37-32.7z -OutFile Python37-32.7z
+        7z x Python37-32.7z
     - name: build
       run: |
         cd luatools_py3
-        ./build_lang.bat
         ./build_luat_x86.bat
-        mkdir luatools_exe
     - name: Upload artifact
       uses: actions/upload-artifact@v1
       with:
