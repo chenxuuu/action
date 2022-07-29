@@ -12,9 +12,6 @@ jobs:
         LUATOOLS2REPO: ${{ secrets.LUATOOLS2REPO }}
       run: |
         .\retry_clone_luatools.ps1
-        cd luatools_py3
-        python -V
-        pip install -r requirement.txt
     - name: prepare python
       run: |
         cd c:/
