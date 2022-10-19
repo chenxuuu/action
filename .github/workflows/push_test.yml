@@ -13,7 +13,7 @@ jobs:
         fetch-depth: 0 # otherwise, there would be errors pushing refs to the destination repository.
     - name: Create local changes
       run: |
-        git remote set-url gitee https://gitee.com/chenxuuu/action
+        git remote add gitee https://gitee.com/chenxuuu/action
         git pull gitee main
     - name: Push changes
       uses: ad-m/github-push-action@master
