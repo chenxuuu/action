@@ -13,13 +13,8 @@ jobs:
         fetch-depth: 0 # otherwise, there would be errors pushing refs to the destination repository.
     - name: Create local changes
       run: |
-        touch test.txt
-        git add .
-    - name: Commit files
-      run: |
-        git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
-        git config --local user.name "github-actions[bot]"
-        git commit -m "test" -a
+        git remote set-url gitee https://gitee.com/chenxuuu/action
+        git pull gitee main
     - name: Push changes
       uses: ad-m/github-push-action@master
       with:
