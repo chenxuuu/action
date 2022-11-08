@@ -22,7 +22,7 @@ jobs:
       run: |
         mkdir iotpower-recorder-linux
         cd ../IOT-Power-Client/iot_recoder
-        sh release-linux.sh
+        bash release-linux.sh
         cd -
         cp ../IOT-Power-Client/iot_recoder/*.tar.gz iotpower-recorder-linux/
     - name: Upload artifact
