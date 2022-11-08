@@ -1,11 +1,11 @@
-name: iotpower-parser-linux
+name: iotpower-parser-mac
 
 on:
   workflow_dispatch:
 
 jobs:
   build:
-    runs-on: ubuntu-22.04
+    runs-on: macos-12
     steps:
     - uses: actions/checkout@v1
     - name: prepare software
@@ -20,13 +20,13 @@ jobs:
         git clone --branch=master https://${GITHUBTOKEN}:x-oauth-basic@github.com/chenxuuu/IOT-Power-Client
     - name: build
       run: |
-        mkdir iotpower-parser-linux-x64/
+        mkdir iotpower-parser-mac-x64/
         cd ../IOT-Power-Client/iot_parser
         cargo build --release
         cd -
-        cp ../IOT-Power-Client/iot_parser/target/release/*.so iotpower-parser-linux-x64/
+        cp ../IOT-Power-Client/iot_parser/target/release/*.so iotpower-parser-mac-x64/
     - name: Upload artifact
       uses: actions/upload-artifact@v2
       with:
-        name: iotpower-parser-linux-x64
-        path: iotpower-parser-linux-x64/
+        name: iotpower-parser-mac-x64
+        path: iotpower-parser-mac-x64/
