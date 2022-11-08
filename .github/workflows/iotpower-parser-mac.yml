@@ -23,7 +23,7 @@ jobs:
         cd ../IOT-Power-Client/iot_parser
         cargo build --release
         cd -
-        cp ../IOT-Power-Client/iot_parser/target/release/*.so iotpower-parser-mac-x64/
+        cp ../IOT-Power-Client/iot_parser/target/release/* iotpower-parser-mac-x64/
     - name: Upload artifact
       uses: actions/upload-artifact@v2
       with:
