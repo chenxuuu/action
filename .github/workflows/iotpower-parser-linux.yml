@@ -1,0 +1,32 @@
+name: iotpower-parser-linux
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+    - uses: actions/checkout@v1
+    - name: prepare software
+      run: |
+        rustup update
+        cargo install cross --git https://github.com/cross-rs/cross
+    - name: clone repo
+      env:
+        GITHUBTOKEN: ${{ secrets.GITHUBTOKEN }}
+      run: |
+        cd ..
+        git clone --branch=master https://${GITHUBTOKEN}:x-oauth-basic@github.com/chenxuuu/IOT-Power-Client
+    - name: build
+      run: |
+        mkdir iotpower-parser-linux
+        cd ../IOT-Power-Client/iot_parser
+        bash release-linux.sh
+        cd -
+        cp ../IOT-Power-Client/iot_parser/*.tar.gz iotpower-parser-linux/
+    - name: Upload artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: output
+        path: iotpower-parser-linux/
