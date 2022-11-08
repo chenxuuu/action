@@ -13,8 +13,8 @@ jobs:
         rustup update
         cargo install cross --git https://github.com/cross-rs/cross
     - name: clone repo
-        env:
-          GITHUBTOKEN: ${{ secrets.GITHUBTOKEN }}
+      env:
+        GITHUBTOKEN: ${{ secrets.GITHUBTOKEN }}
       run: |
         cd ..
         git clone --branch=master https://${GITHUBTOKEN}:x-oauth-basic@github.com/chenxuuu/IOT-Power-Client
