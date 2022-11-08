@@ -11,7 +11,6 @@ jobs:
     - name: prepare software
       run: |
         rustup update
-        cargo install cross --git https://github.com/cross-rs/cross
     - name: clone repo
       env:
         GITHUBTOKEN: ${{ secrets.GITHUBTOKEN }}
