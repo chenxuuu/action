@@ -1,0 +1,32 @@
+name: iotpower-recorder-mac
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-12
+    steps:
+    - uses: actions/checkout@v1
+    - name: prepare software
+      run: |
+        rustup update
+        cargo install cross --git https://github.com/cross-rs/cross
+    - name: clone repo
+      env:
+        GITHUBTOKEN: ${{ secrets.GITHUBTOKEN }}
+      run: |
+        cd ..
+        git clone --branch=master https://${GITHUBTOKEN}:x-oauth-basic@github.com/chenxuuu/IOT-Power-Client
+    - name: build
+      run: |
+        mkdir iotpower-recorder-mac
+        cd ../IOT-Power-Client/iot_recoder
+        cargo build --release
+        cd -
+        cp ../IOT-Power-Client/iot_recoder/target/release/iot_recoder iotpower-recorder-mac/
+    - name: Upload artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: output
+        path: iotpower-recorder-mac/
