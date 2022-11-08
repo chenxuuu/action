@@ -28,5 +28,5 @@ jobs:
     - name: Upload artifact
       uses: actions/upload-artifact@v2
       with:
-        name: output
+        name: iotpower-recorder-mac
         path: iotpower-recorder-mac/
