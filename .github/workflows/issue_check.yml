@@ -2,7 +2,13 @@ name: issue_check
 
 on:
   issues:
-    types: [opened,edited]
+    types: [opened]
+  workflow_dispatch:
+    inputs:
+      issue_url:
+        description: 'issue url'
+        required: true
+        default: 'https://github.com/[user]/[repo]/issues/[id]'
 
 jobs:
   issue_check:
@@ -16,8 +22,9 @@ jobs:
         wget https://raw.githubusercontent.com/chenxuuu/action/main/scripts/issue_check.py
     - name: check issue
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.ISSUE_TOKEN }}
         ISSUE_URL: ${{ github.event.issue.html_url }}
+        ISSUE_URL_INPUT: ${{ github.event.inputs.issue_url }}
       run: |
         cd ..
         python issue_check.py
