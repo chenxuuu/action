@@ -2,10 +2,10 @@ name: issue_check
 
 on:
   issues:
-    types: [opened]
+    types: [opened,edited]
 
 jobs:
-  ssh:
+  issue_check:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
