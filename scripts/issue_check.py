@@ -13,6 +13,7 @@ url = os.getenv('ISSUE_URL')
 if url == None or len(url) == 0:
     print("No issue url, try get input from env")
     url = os.getenv('ISSUE_URL_INPUT')
+print("Issue url: "+url)
 split = url.split('/')
 
 repoName = split[3]+"/"+split[4]
