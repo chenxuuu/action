@@ -10,7 +10,7 @@ auth = Auth.Token(os.getenv('GITHUB_TOKEN'))
 g = Github(auth=auth)
 
 url = os.getenv('ISSUE_URL')
-if url == None:
+if url == None or len(url) == 0:
     print("No issue url, try get input from env")
     url = os.getenv('ISSUE_URL_INPUT')
 split = url.split('/')
