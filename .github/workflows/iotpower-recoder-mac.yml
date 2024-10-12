@@ -26,7 +26,7 @@ jobs:
         cd -
         cp ../IOT-Power-Client/iot_recoder/target/release/iot_recoder iotpower-recorder-mac/
     - name: Upload artifact
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: iotpower-recorder-mac
         path: iotpower-recorder-mac/

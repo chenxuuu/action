@@ -27,7 +27,7 @@ jobs:
         cd -
         cp ../IOT-Power-Client/iot_parser/target/release/*.so iotpower-parser-linux-x64/
     - name: Upload artifact
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: iotpower-parser-linux-x64
         path: iotpower-parser-linux-x64/

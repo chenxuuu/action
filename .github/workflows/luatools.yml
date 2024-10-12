@@ -23,7 +23,7 @@ jobs:
         ./build_lang_x86.bat
         ./build_luat_x86.bat
     - name: Upload artifact
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: luatools
         path: luatools_py3/Luatools_v2_x86.exe
