@@ -7,7 +7,7 @@ jobs:
   build:
     runs-on: ubuntu-20.04
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v4
     - name: prepare software
       run: |
         cd ..
@@ -41,7 +41,7 @@ jobs:
         mkdir ../LuatOS/luatosfw
         cp hex/8850BM_LuatOS_debug/*.soc ../LuatOS/luatosfw
     - name: Upload artifact
-      uses: actions/upload-artifact@v1
+      uses: actions/upload-artifact@v2
       with:
         name: soc8850
         path: luatosfw
