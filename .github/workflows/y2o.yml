@@ -7,9 +7,6 @@ on:
         description: 'Log level'
         required: true
         default: 'warning'
-  schedule:
-    #每晚凌晨3:30自动运行（+8时区）
-    - cron:  '30 19 * * *'
 
 jobs:
   build:
